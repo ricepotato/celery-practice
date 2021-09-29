@@ -2,8 +2,8 @@ from celery import Celery
 
 app = Celery(
     "proj",
-    broker="redis://localhost:6379/0",
-    backend="redis://localhost",
+    broker="pyamqp://ricepotato:1234@localhost:5672/ricepotato",
+    backend="rpc://",
     include=["proj.tasks"],
 )
 
