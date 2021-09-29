@@ -4,11 +4,13 @@ version: "3.1"
 #docker run -d -p 5672:5672 rabbitmq
 services:
   rabbitmq:
-    image: rabbitmq:latest
+    image: rabbitmq:3.9.7
+    container_name: rabbitmq
+    hostname: rabbitmq
     ports:
       - 5672:5672
-
-  redis:
-    image: redis:latest
-    ports:
-      - 6379:6379
+      - 15672:15672
+    volumes:
+      - ./rabbitmq/home:/var/lib/rabbitmq
+      - ./rabbitmq/conf:/etc/rabbitmq
+      - ./logs:/var/log/rabbitmq
